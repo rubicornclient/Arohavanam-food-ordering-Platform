@@ -127,3 +127,10 @@
 .payment-status.pending i{background:#b94e46}
 .payment-feedback.pending{border-color:#ecd8b2;background:#faf4e6;color:#8f6e31}
 @media(max-width:680px){.footer-bottom .footer-admin-link{justify-self:end}.footer-bottom>span:last-of-type{text-align:left}.admin-topbar-actions{gap:8px}.admin-topbar-actions button{font-size:0}.admin-topbar-actions button svg{width:14px}.admin-auth-page{padding:90px 15px 30px}.admin-auth-brand{left:17px;top:18px}.admin-auth-card{padding:24px 19px}.payment-summary-heading{align-items:flex-start;flex-direction:column}.payment-date-controls{width:100%;flex-wrap:wrap}.payment-date-picker{margin-left:auto}.payment-date-picker input{width:115px}.payment-summary-cards{grid-template-columns:1fr}.payment-stat{min-height:95px}}
+
+/* Keep order actions beside menu cards and review access below the menu */
+.storefront-main{padding-bottom:84px}
+.order-bar{position:fixed;z-index:35;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;justify-content:space-between;gap:22px;min-width:310px;padding:9px 10px 9px 16px;border:1px solid #d9d0c3;background:#fffefa;box-shadow:0 8px 28px rgba(48,33,21,.16)}
+.order-bar>span{color:#574b3f;font-size:10px;font-weight:700}
+.order-bar .button{min-height:39px;padding:0 14px}
+@media(max-width:680px){.storefront-main{padding-bottom:78px}.order-bar{left:12px;right:12px;bottom:10px;transform:none;min-width:0;gap:8px;padding:8px 9px}.order-bar>span{font-size:9px}.order-bar .button{min-height:37px;padding:0 11px;font-size:10px}}
