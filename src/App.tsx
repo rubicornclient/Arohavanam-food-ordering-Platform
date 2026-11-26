@@ -104,19 +104,19 @@ function CartDrawer({ lines, onChange, onRemove, onClear, onClose, onCheckout, i
 }
 
 function Quantity({ value, onChange }: { value: number; onChange: (change: number) => void }) {
-  return <div className="qty-control product-qty"><button onClick={() => onChange(-1)} aria-label="Decrease quantity"><Minus size={14} /></button><span>{value}</span><button onClick={() => onChange(1)} aria-label="Increase quantity"><Plus size={14} /></button></div>
+  return <div className="qty-control product-qty"><button onClick={() => onChange(-1)} aria-label="Remove one item from your order"><Minus size={14} /></button><span>{value}</span><button onClick={() => onChange(1)} aria-label="Add one more item to your order"><Plus size={14} /></button></div>
 }
 
 function ProductCard({ item, quantity, onChange }: { item: MenuItem; quantity: number; onChange: (change: number) => void }) {
   return <article className={`product-card ${!item.available ? 'is-unavailable' : ''}`}>
     <div className="product-photo"><ProductImage item={item} className="product-image" />{item.bestseller && <span className="photo-badge"><Flame size={12} /> Guest favourite</span>}{!item.available && <span className="unavailable-cover">Currently unavailable</span>}</div>
-    <div className="product-info"><div className="product-title-line"><h3>{item.name}</h3><span className={`food-mark ${item.type}`} title={item.type === 'veg' ? 'Vegetarian' : 'Non-vegetarian'}><i /></span></div><p>{item.description}</p><div className="product-card-bottom"><strong>{inr(item.price)}</strong>{quantity ? <Quantity value={quantity} onChange={onChange} /> : <button className="add-button" disabled={!item.available} onClick={() => onChange(1)}><Plus size={15} /> Add</button>}</div></div>
+    <div className="product-info"><div className="product-title-line"><h3>{item.name}</h3><span className={`food-mark ${item.type}`} title={item.type === 'veg' ? 'Vegetarian' : 'Non-vegetarian'}><i /></span></div><p>{item.description}</p><div className="product-card-bottom"><strong>{inr(item.price)}</strong>{quantity ? <Quantity value={quantity} onChange={onChange} /> : <button className="add-button" disabled={!item.available} onClick={() => onChange(1)}><ShoppingBasket size={15} /> Add to cart</button>}</div></div>
   </article>
 }
 
 function ComboCard({ combo, quantity, onChange }: { combo: Combo; quantity: number; onChange: (change: number) => void }) {
   const saving = Math.max(0, (combo.originalPrice ?? combo.price) - combo.price)
-  return <article className="combo-card"><div className="combo-photo"><Image src={combo.image} alt={`${combo.name} demonstration combo`} className="combo-image" /><span className="combo-ribbon">COMBO</span></div><div className="combo-details"><p className="eyebrow">A LITTLE MORE, TOGETHER</p><h3>{combo.name}</h3><p className="combo-items">{combo.description}</p><div className="combo-footer"><div><strong>{inr(combo.price)}</strong>{saving > 0 && <span className="old-price">{inr(combo.originalPrice!)}</span>}<span className="saving">Save {inr(saving)}</span></div>{quantity ? <Quantity value={quantity} onChange={onChange} /> : <button className="add-button" onClick={() => onChange(1)}><Plus size={15} /> Add combo</button>}</div></div></article>
+  return <article className="combo-card"><div className="combo-photo"><Image src={combo.image} alt={`${combo.name} demonstration combo`} className="combo-image" /><span className="combo-ribbon">COMBO</span></div><div className="combo-details"><p className="eyebrow">A LITTLE MORE, TOGETHER</p><h3>{combo.name}</h3><p className="combo-items">{combo.description}</p><div className="combo-footer"><div><strong>{inr(combo.price)}</strong>{saving > 0 && <span className="old-price">{inr(combo.originalPrice!)}</span>}<span className="saving">Save {inr(saving)}</span></div>{quantity ? <Quantity value={quantity} onChange={onChange} /> : <button className="add-button" onClick={() => onChange(1)}><ShoppingBasket size={15} /> Add combo to cart</button>}</div></div></article>
 }
 
 function ProductGrid({ title, kicker, items, lines, onChange, id }: { title: string; kicker?: string; items: MenuItem[]; lines: CartLine[]; onChange: (id: string, change: number) => void; id?: string }) {
